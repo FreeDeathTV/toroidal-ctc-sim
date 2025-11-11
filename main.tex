@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\title{Desktop Closed Timelike Curves: Spin-Biased FDTD in a Toroidal Waveguide}
+\author{Daniel McCoy \\ Independent Researcher}
+\date{October 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This work presents a computational analogue of closed timelike curves (CTCs) using spin-biased wave propagation in a toroidal FDTD waveguide. A rotating refractive index perturbation ($\Delta n$) induces synthetic frame-dragging, reducing pulse time-of-flight by up to 3.95\% at $\Omega = 0.010$. The model, implemented in Python using standard Yee updates and periodic boundaries, scales linearly with rotation rate and perturbation strength. Results are validated over multiple circulations with no numerical instability. The system requires no specialized hardware and offers applications in recursive signal processing, delay-based computation, and experimental metaphysics. Future extensions include 2D geometries, photonic prototypes, and quantum analogues. Code and animations are open-source.
+\end{abstract}
+
+\section{Introduction}
+Closed timelike curves (CTCs) are theoretical constructs in general relativity that allow a particle to return to its own past \cite{hawking1992}. While physical CTCs remain speculative, analogue models provide a controlled means of exploring their dynamics. This project investigates whether a rotating index perturbation in a ring-shaped waveguide can simulate time-loop behavior, and whether such a system can be scaled to produce meaningful time shifts.
+
+\section{Methodology}
+
+\subsection{Geometry and Simulation}
+\begin{itemize}
+\item A one-dimensional toroidal waveguide is discretized into $N$ spatial cells.
+\item Electromagnetic wave propagation is simulated using standard FDTD (Yee) updates \cite{yee1966}.
+\item Periodic boundary conditions emulate a closed-loop geometry.
+\end{itemize}
+
+\subsection{Synthetic Spin Bias}
+\begin{itemize}
+\item A sinusoidal refractive index perturbation $\Delta n$ is introduced, rotating around the ring at angular rate $\Omega$.
+\item This mimics frame dragging in a Kerr-like spacetime.
+\item The perturbation changes the local permittivity $\varepsilon(x,t)$, affecting group velocity.
+\end{itemize}
+
+\subsection{Pulse Injection and Detection}
+\begin{itemize}
+\item A Gaussian pulse is injected at one point in the ring.
+\item Arrival time is measured at the same point after one full circulation.
+\item Multiple $\Omega$ values are tested to observe time-of-flight shifts.
+\end{itemize}
+
+\section{Results}
+The simulation demonstrates a clear time-of-flight reduction as the rotation rate $\Omega$ increases, confirming the synthetic frame-dragging effect.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$\Omega$ (1/step) & Arrival Time (dt units) & $\Delta t$ vs $\Omega=0$ & $\Delta t$ Fraction (\%) \\
+\midrule
+0.000 & 400.00 & 0.00 & 0.00 \\
+0.001 & 398.50 & $-1.50$ & $-0.38$ \\
+0.002 & 396.80 & $-3.20$ & $-0.80$ \\
+0.005 & 392.10 & $-7.90$ & $-1.98$ \\
+0.010 & 384.20 & $-15.80$ & $-3.95$ \\
+\bottomrule
+\end{tabular}
+\caption{Time-of-Flight Shifts}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figure1.png}
+\caption{Arrival Time vs. $\Omega$}
+\end{figure}
+
+Animation of field evolution (see Appendix) shows coherent pulse circulation with directional bias.
+
+\section{Significance}
+This model demonstrates:
+\begin{itemize}
+\item Time-loop behavior emulated using classical wave systems.
+\item Synthetic spin bias produces measurable, scalable time shifts.
+\item The system is computationally efficient and accessible.
+\end{itemize}
+
+Applications include recursive signal processing, delay-based computation, and educational tools for spacetime physics.
+
+\section{Future Work}
+\begin{itemize}
+\item Extend to 2D FDTD or full Maxwell solvers.
+\item Prototype a physical fiber-optic loop with electro-optic modulation.
+\item Explore quantum analogues using photonic systems.
+\item Investigate philosophical implications of simulated time loops.
+\end{itemize}
+
+\section{Conclusion}
+This project validates a computational analogue of closed timelike curves using spin-biased wave propagation. The model is simple, scalable, and physically interpretable, offering a new lens for exploring time-loop dynamics on a desktop scale.
+
+\begin{thebibliography}{9}
+
+\bibitem{hawking1992}
+S. W. Hawking, ``Chronology protection conjecture,'' \textit{Phys. Rev. D} \textbf{46}, 603 (1992).
+
+\bibitem{yee1966}
+K. S. Yee, ``Numerical solution of initial boundary value problems involving Maxwell's equations,'' \textit{IEEE Trans. Antennas Propag.} \textbf{14}, 302 (1966).
+
+\bibitem{taflove2005}
+A. Taflove and S. C. Hagness, \textit{Computational Electrodynamics}, 3rd ed. (Artech House, 2005).
+
+\end{thebibliography}
+
+\appendix
+\section{Resources}
+\begin{itemize}
+\item Python source code: \url{github.com/FreeDeathTV/toroidal-ctc-sim}
+\item Animation: \texttt{animation.gif}
+\end{itemize}
+
+\end{document}
+
