@@ -14,6 +14,8 @@ Developed for the concept paper:
 Author: Daniel McCoy  
 Date: November 2025
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17592350.svg)](https://doi.org/10.5281/zenodo.17592350)
+
 ---
 
 ## 🧠 What It Does
