@@ -1,0 +1,18 @@
+{
+  "N": 1000,
+  "dx": 0.001,
+  "dt": 0.0005,
+  "delta_n": 0.01,
+  "omega_values": [0.000, 0.001, 0.002, 0.005, 0.010],
+  "pulse_position": 100,
+  "pulse_sigma": 20,
+  "injection_duration": 400,
+  "detection_threshold": 0.1,
+  "circulations": 1,
+  "boundary_condition": "periodic",
+  "perturbation_profile": "sinusoidal",
+  "perturbation_rotation": "clockwise",
+  "simulation_steps": 1000,
+  "averaging_runs": 10,
+  "output_files": ["figure1.png", "animation.gif", "timing_data.csv"]
+}
