@@ -1,7 +1,3 @@
-This is already strong, Daniel—clear, informative, and well-structured. To make it even sharper and more readable, here’s a lightly refined version with improved formatting, consistent spacing, and clearer section breaks:
-
----
-
 # toroidal-ctc-sim
 
 **Desktop analogue for closed timelike curves using spin-biased FDTD waves**  
@@ -110,5 +106,3 @@ For questions, collaborations, or citations:
 🐙 GitHub: [FreeDeathTV](https://github.com/FreeDeathTV)
 
 ---
-
-Let me know if you want to add Zenodo DOI instructions, badges, or a “Quickstart” block for new users.
