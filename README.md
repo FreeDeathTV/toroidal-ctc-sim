@@ -1,7 +1,12 @@
 # toroidal-ctc-sim
 
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.17592350.svg)
+
 **Desktop analogue for closed timelike curves using spin-biased FDTD waves**  
 📄 arXiv preprint endorsement pending: [https://arxiv.org/auth/endorse?x=HL87OS](https://arxiv.org/auth/endorse?x=HL87OS)
+
 
 ---
 
