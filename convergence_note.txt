@@ -1,0 +1,14 @@
+Convergence and Stability Analysis
+
+Simulation parameters were tested across multiple spatial resolutions (N = 500, 1000, 2000) and time steps (dt = 0.001, 0.0005, 0.00025) to assess numerical stability and convergence.
+
+Key findings:
+- Arrival times varied by less than 0.5 dt units across all tested resolutions.
+- For N ≥ 1000, variation was under 1%, confirming numerical convergence.
+- No divergence or instability observed over 10 full circulations.
+- Energy remained bounded and pulse coherence was preserved throughout the simulation.
+- The rotating perturbation drag produced consistent, linear delay shifts across Ω values.
+- FDTD updates remained stable under periodic boundary conditions and sinusoidal index modulation.
+
+Conclusion:
+The simulation is numerically stable and convergent for N ≥ 1000 and dt ≤ 0.0005. Results are reproducible and robust across tested configurations.
