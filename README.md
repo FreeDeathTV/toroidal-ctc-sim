@@ -69,8 +69,8 @@ Key variables defined in `fdtd_toroidal.py`:
 
 ### 📄 Documentation
 
-- Concept Paper (PDF) — *link coming soon*
-- White Paper: Commercial Applications — *link coming soon*
+- Concept Paper (PDF) — *concept_paper.pdf*
+- White Paper: Commercial Applications — *white_paper_commercial.pdf*
 
 ### 🙋 Contact
 
