@@ -1,24 +1,43 @@
 """
 Toroidal CTC Sim: Spin-Biased FDTD Wave Propagation
 Author: Daniel McCoy (@FreeDeathTV)
-Date: October 2025
-Paper: Desktop Closed Timelike Curves
+Date: November 2025
+Paper: Synthetic Time-Loop Analogue via Spin-Biased Wave Propagation in a Toroidal FDTD System
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
 import argparse
+import json
+import csv
 
-# Default parameters
-N = 400           # Grid cells
-dt = 0.5          # Time step
-c = 1.0           # Speed of light (normalized)
-eps0 = 1.0        # Base permittivity
+# Load simulation parameters from JSON
+with open('parameters.json', 'r') as f:
+    params = json.load(f)
 
-# Data from paper table
-omegas = np.array([0.000, 0.001, 0.002, 0.005, 0.010])
-arrival_times = np.array([400.00, 398.50, 396.80, 392.10, 384.20])
+N = params['N']
+dt = params['dt']
+dx = params['dx']
+omega_default = params['omega']
+pulse_width = params['pulse_width']
+pulse_center = params['pulse_center']
+n_base = params['n_base']
+n_mod = params['n_mod']
+
+# Load arrival-time data from CSV
+omegas = []
+arrival_times = []
+
+with open('timing_data.csv', 'r') as f:
+    reader = csv.reader(f)
+    next(reader)  # Skip header
+    for row in reader:
+        omegas.append(float(row[0]))
+        arrival_times.append(float(row[1]))
+
+omegas = np.array(omegas)
+arrival_times = np.array(arrival_times)
 
 def generate_figure1():
     """Generate Figure 1: Arrival Time vs Omega"""
@@ -35,23 +54,24 @@ def generate_figure1():
 
 def fdtd_step(E, H, Omega, t):
     """One FDTD step with rotating perturbation"""
-    delta_n = 0.1 * np.sin(2 * np.pi * (np.arange(N) + Omega * t) / N)
-    eps = eps0 * (1 + delta_n)
+    delta_n = n_mod * np.sin(2 * np.pi * (np.arange(N) + Omega * t) / N)
+    eps = n_base * (1 + delta_n)
     H[1:] = H[1:] + (dt / eps[:-1]) * (E[1:] - E[:-1])
     H[0] = H[0] + dt * (E[-1] - E[0])
     E = np.roll(E, -1)
     E[0] = E[0] + dt * (H[-1] - H[0])
     return E, H
 
-def generate_animation(Omega=0.005):
+def generate_animation(Omega):
     """Generate animation GIF"""
     theta = np.linspace(0, 2*np.pi, N)
     
     # Initialize fields
     E = np.zeros(N)
     H = np.zeros(N)
-    pulse_center = N//4
-    E[pulse_center-10:pulse_center+10] = np.exp(-((np.arange(-10,10))**2)/(2*3**2))
+    E[pulse_center - pulse_width : pulse_center + pulse_width] = np.exp(
+        -((np.arange(-pulse_width, pulse_width))**2) / (2 * 3**2)
+    )
     
     frames = []
     for t in range(500):
@@ -66,7 +86,7 @@ def generate_animation(Omega=0.005):
     
     def animate(i):
         line.set_data(theta, 1 + 0.5 * frames[i])
-        ax.set_title(f'Time: {i*2*dt:.1f} dt | Lap: {i*2*dt/400:.1f}', pad=20)
+        ax.set_title(f'Time: {i*2*dt:.1f} dt | Lap: {i*2*dt/N:.1f}', pad=20)
         return line,
     
     ani = FuncAnimation(fig, animate, frames=len(frames), interval=50, blit=True)
@@ -76,7 +96,7 @@ def generate_animation(Omega=0.005):
 
 def main():
     parser = argparse.ArgumentParser(description="Toroidal CTC FDTD Simulation")
-    parser.add_argument('--omega', type=float, default=0.005, help='Rotation rate Omega')
+    parser.add_argument('--omega', type=float, default=omega_default, help='Rotation rate Omega')
     parser.add_argument('--no-fig', action='store_true', help='Skip figure generation')
     parser.add_argument('--no-anim', action='store_true', help='Skip animation')
     
