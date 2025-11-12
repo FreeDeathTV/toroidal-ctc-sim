@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this simulation or concept in your work, please cite it using the metadata below."
+title: "Toroidal CTC Simulation via Rotating Perturbation Drag"
+authors:
+  - family-names: McCoy
+    given-names: Daniel
+    email: deathbyanyothername@mail.co.uk
+    orcid: https://orcid.org/0009-0003-1486-0749
+date-released: 2025-11-12
+version: 1.0.1
+repository-code: https://github.com/FreeDeathTV/toroidal-ctc-sim
+license: MIT
+keywords:
+  - FDTD
+  - closed timelike curves
+  - delay-based computation
+  - photonics
+  - analogue gravity
+  - toroidal waveguide
+  - rotating perturbation
+  - time-of-flight
+  - recursive logic
+  - synthetic time asymmetry
+abstract: >
+  This repository contains a Python-based finite-difference time-domain (FDTD) simulation of directional wave delay in a toroidal geometry. It models synthetic time-of-flight shifts induced by a rotating refractive index perturbation—serving as an analogue for closed timelike curve (CTC) behavior in classical wave systems. Includes reproducibility files, visualisations, and concept/white papers.
