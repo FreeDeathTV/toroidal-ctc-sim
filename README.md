@@ -16,7 +16,7 @@ This repository contains a Python-based finite-difference time-domain (FDTD) sim
 
 Developed for the concept paper:  
 **"Synthetic Time-Loop Analogue via Rotating Perturbation Drag in a Toroidal FDTD System"**  
-Author: Daniel McCoy  
+Author: Dan Mac
 Date: November 2025
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17592350.svg)](https://doi.org/10.5281/zenodo.17592350)
