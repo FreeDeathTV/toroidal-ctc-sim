@@ -108,7 +108,7 @@ All simulation settings are defined in [`parameters.json`](parameters.json), inc
 ## 🙋 Contact
 
 For questions, collaborations, or citations:  
-**Daniel McCoy**  
+**Dan Mac** 
 📧 Email: deathbyanyothername@mail.co.uk  
 🐙 GitHub: [FreeDeathTV](https://github.com/FreeDeathTV)
 
